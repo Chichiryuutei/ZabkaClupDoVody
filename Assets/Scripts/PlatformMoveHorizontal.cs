@@ -25,19 +25,19 @@ public class PlatformMoveHorizontal : MonoBehaviour
     {
         if (movingRight)
         {
-            //newPosition = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
-            newPosition = rb.position + new Vector2(speed * Time.deltaTime, 0);
-            rb.MovePosition(newPosition);
+            newPosition = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
+            //newPosition = rb.position + new Vector2(speed * Time.deltaTime, 0);
         }
         else
         {
-            //newPosition = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
-            newPosition = rb.position + new Vector2(-speed * Time.deltaTime, 0);
-            rb.MovePosition(newPosition);
+            newPosition = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
+            //newPosition = rb.position + new Vector2(-speed * Time.deltaTime, 0);
         }
 
-        if (newPosition.x >= endPositionRight.x || newPosition.x <= endPositionLeft.x)
+        if (newPosition.x > endPositionRight.x || newPosition.x < endPositionLeft.x)
         movingRight = !movingRight;
+
+        //rb.MovePosition(newPosition);
 
 
         transform.position = newPosition;

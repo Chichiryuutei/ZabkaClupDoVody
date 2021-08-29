@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 8155183992012134844}
   - component: {fileID: 8155183992012134842}
   m_Layer: 9
-  m_Name: StickyPlatform
+  m_Name: StickyPlatformMedium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ Transform:
   m_GameObject: {fileID: 8155183992012134847}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.09, y: 2.13, z: 0}
-  m_LocalScale: {x: 0.2, y: 2, z: 1}
+  m_LocalScale: {x: 0.12, y: 2, z: 1}
   m_Children:
   - {fileID: 3158080081258710784}
   m_Father: {fileID: 0}
@@ -131,7 +131,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 543bca87826557a4798905e307151d92, type: 3}
-  m_Color: {r: 0.9339623, g: 0.40970984, b: 0.654687, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

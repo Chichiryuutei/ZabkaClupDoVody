@@ -25,19 +25,14 @@ public class PlatformMoveVertical : MonoBehaviour
     {
         if (movingUp)
         {
-            //newPosition = new Vector2(transform.position.x, transform.position.y + speed * Time.deltaTime);
-
-            newPosition = rb.position + new Vector2(0, speed * Time.deltaTime);
-            rb.MovePosition(newPosition);
+            newPosition = new Vector2(transform.position.x, transform.position.y + speed * Time.deltaTime);
         }
         else
         {
-            //newPosition = new Vector2(transform.position.x, transform.position.y - speed * Time.deltaTime);
-            newPosition = rb.position + new Vector2(0, -speed * Time.deltaTime);
-            rb.MovePosition(newPosition);
+            newPosition = new Vector2(transform.position.x, transform.position.y - speed * Time.deltaTime);
         }
 
-        if (newPosition.y >= endPositionRight.y || newPosition.y <= endPositionLeft.y)
+        if (newPosition.y > endPositionRight.y || newPosition.y < endPositionLeft.y)
             movingUp = !movingUp;
 
 

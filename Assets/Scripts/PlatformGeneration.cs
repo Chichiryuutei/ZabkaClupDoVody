@@ -10,8 +10,8 @@ public class PlatformGeneration : MonoBehaviour
     float k_PlatformMinX;        // Min (Left) X coordinate to spawn a platform
     float k_PlatformMaxX;        // Max (Right) X coordinate to spawn a platform
 
-    const float k_PlatformMaxGapX = 4.0f;     // Maximum horizontal distance between 2 platforms
-    const float k_PlatformMinGapX = 2.0f;     // Maximum horizontal distance between 2 platforms
+    const float k_PlatformMaxGapX = 2.5f;     // Maximum horizontal distance between 2 platforms
+    const float k_PlatformMinGapX = 0.5f;     // Maximum horizontal distance between 2 platforms
     const float k_PlatformMaxGapY = 2.2f;     // Maximum vertical distance between 2 platforms
     const float k_PlatformMinGapY = 0.7f;     // Minimum vertical distance between 2 platforms
 
@@ -36,6 +36,10 @@ public class PlatformGeneration : MonoBehaviour
 
     public GameObject platformPrefabMHMoving; // Prefab of the medium MOVING horizontal platform to spawn
     public GameObject platformPrefabMVMoving; // Prefab of the medium MOVING vertical platform to spawn
+
+    public GameObject flyPrefab;
+
+    public GameObject colliderToSpawnMore;
 
 
     public struct Platforms
@@ -63,11 +67,11 @@ public class PlatformGeneration : MonoBehaviour
         Platforms LongHorizontal = new Platforms(1.5f, 0f, platformPrefabLH);
         Platforms MediumHorizontal = new Platforms(1f, 0f, platformPrefabMH);
         Platforms SmallHorizontal = new Platforms(0.5f, 0f, platformPrefabSH);
-        Platforms MediumHorizontalMoving = new Platforms(3f, 0f, platformPrefabMHMoving);
+        Platforms MediumHorizontalMoving = new Platforms(2f, 0f, platformPrefabMHMoving);
         Platforms LongVertical = new Platforms(0f, 1.5f, platformPrefabLV);
         Platforms MediumVertical = new Platforms(0f, 1f, platformPrefabMV);
         Platforms SmallVertical = new Platforms(0f, 0.5f, platformPrefabSV);
-        Platforms MediumVerticalMoving = new Platforms(0f, 3f, platformPrefabMVMoving);
+        Platforms MediumVerticalMoving = new Platforms(0f, 2f, platformPrefabMVMoving);
 
         m_CameraHeight = 2f * Camera.main.orthographicSize;
         m_CameraWidth = m_CameraHeight * Camera.main.aspect;
@@ -91,7 +95,7 @@ public class PlatformGeneration : MonoBehaviour
             MediumVerticalMoving
         };
 
-        //CalculatePlatformPosition();
+        CalculatePlatformPosition();
     }
 
 
@@ -101,10 +105,18 @@ public class PlatformGeneration : MonoBehaviour
 
         m_PlatformsInCurrentGroup = 0;
         int minHorizontalsGroup = 5;
-        int platformIndex = 0;
+        int platformIndex;
+        bool checkerBuild = false;
+        int platformCountFly = 0;
 
-        while (m_PlatformsInCurrentGroup < 25)
+        while (m_PlatformsInCurrentGroup < 50)
         {
+            if (m_PlatformsInCurrentGroup > m_PlatformsInCurrentGroup / 2 && !checkerBuild)
+            {
+                GameObject colliderChecker = Instantiate(colliderToSpawnMore, new Vector2(0, m_PlatformPreviousY), Quaternion.identity);
+                StartCoroutine(CheckSpawnMore(colliderChecker));
+                checkerBuild = true;
+            }
             // group of platforms going in one direction randomly between 2 to 6
             int platformCount = Random.Range(2, 6);
             m_BuildingRight = !m_BuildingRight;
@@ -119,7 +131,12 @@ public class PlatformGeneration : MonoBehaviour
                 else
                 {
                     platformIndex = Random.Range(0, platformList.Count);
-                    if (platformIndex >= 4) minHorizontalsGroup = 5;
+                    if (platformIndex >= 4)
+                    {
+                        minHorizontalsGroup = 5;
+                        if (i < platformCount - 1)
+                            m_BuildingRight = !m_BuildingRight;
+                    }
                 }
                 
 
@@ -161,7 +178,27 @@ public class PlatformGeneration : MonoBehaviour
 
                 Instantiate(platformList[platformIndex].k_PlatformPrefab, new Vector2(position.x, position.y), Quaternion.identity);
                 m_PlatformsInCurrentGroup++;
+                if (platformCountFly++ == 15)
+                {
+                    Instantiate(flyPrefab, new Vector2(position.x + 0.3f , position.y + 1.5f), Quaternion.identity);
+                    platformCountFly = 0;
+                }
             }
         }
+    }
+
+    private IEnumerator CheckSpawnMore(GameObject colliderToCheck)
+    {
+        PlatformAddMoreCheck script = colliderToCheck.GetComponent<PlatformAddMoreCheck>();
+        while (!script.m_ColliderTriggered)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        Destroy(colliderToCheck);
+        CalculatePlatformPosition();
+        
+
+        yield return null;
     }
 }
