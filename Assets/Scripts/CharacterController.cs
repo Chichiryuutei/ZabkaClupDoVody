@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using System;
 
 public class CharacterController : MonoBehaviour
 {
@@ -54,7 +56,11 @@ public class CharacterController : MonoBehaviour
 	float k_PlayerMinX;			// Min X coordinate before counting as dead
 	float k_PlayerMaxX;    // Max X coordinate before counting as dead
 
-	public GameObject m_CancasObject;
+	public GameObject m_CavcasObject;
+	public GameObject m_LivesObject;
+	public GameObject m_ScoreObject;
+	Text livesText;
+	Text scoreText;
 	SceneHandler m_SceneHandlerScript;
 
 	// Scoring: TODO: make this script?
@@ -62,8 +68,32 @@ public class CharacterController : MonoBehaviour
 	float m_TimeAlive = 0;
 	int m_ObjectsCollected = 0;
 	int m_ScoreHeigth = 0;
-	int m_TongueShotsAvailable = 20;
+	int m_ScoreHeigthOld = 0;
+	int m_TongueShotsAvailable = 3;
 	List<int> m_CollectedObjectsIDs;
+
+	// shot
+	public Sprite spriteZero;
+	public Sprite spriteOne;
+	public Sprite spriteTwo;
+	public Sprite spriteThree;
+	public GameObject cursorNumber;
+	SpriteRenderer cursorRenderer;
+
+	// final scene
+	public GameObject m_StatsScreen;
+	bool GameOver = false;
+	public GameObject m_ScoreFinal;
+	public GameObject m_FliesFinal;
+	public GameObject m_TimeFinal;
+	Text m_ScoreFinalText;
+	Text m_FliesFinalText;
+	Text m_TimeFinalText;
+
+	float m_TimeToAcc = 0;
+
+	//Sound
+
 
 
 	Animator m_PlayerAnimator;
@@ -93,8 +123,17 @@ public class CharacterController : MonoBehaviour
 		k_PlayerMinX = -1f * k_CameraWidth / 2f;
 		k_PlayerMaxX = k_CameraWidth / 2f;
 
-		m_SceneHandlerScript = m_CancasObject.GetComponent<SceneHandler>();
+		m_SceneHandlerScript = m_CavcasObject.GetComponent<SceneHandler>();
 		m_CollectedObjectsIDs = new List<int>();
+
+		livesText = m_LivesObject.GetComponent<Text>();
+		scoreText = m_ScoreObject.GetComponent<Text>();
+
+		cursorRenderer = cursorNumber.GetComponent<SpriteRenderer>();
+
+		m_FliesFinalText = m_FliesFinal.GetComponent<Text>();
+		m_ScoreFinalText = m_ScoreFinal.GetComponent<Text>();
+		m_TimeFinalText = m_TimeFinal.GetComponent<Text>();
 
 	}
 
@@ -189,17 +228,61 @@ public class CharacterController : MonoBehaviour
 			StartCoroutine(RespawnPlayer(new Vector2(0, m_LavaTransform.transform.position.y + 5)));
 		}
 
-		if (m_RemainingLives <= 0)
-        {
-			m_SceneHandlerScript.GameOver();
-		}
-
 		if (m_ScoreHeigth / 10 < (int)(transform.position.y))
         {
+			m_ScoreHeigthOld = m_ScoreHeigth;
 			m_ScoreHeigth = (int)transform.position.y * 10;
-			m_Score += m_ScoreHeigth;
+			m_Score += m_ScoreHeigth - m_ScoreHeigthOld;
 		}
-    }
+
+		livesText.text = m_RemainingLives.ToString();
+		scoreText.text = m_Score.ToString();
+
+        switch (m_TongueShotsAvailable)
+        {
+			case 0:
+				cursorRenderer.sprite = spriteZero;
+				break;
+			case 1:
+				cursorRenderer.sprite = spriteOne;
+				break;
+			case 2:
+				cursorRenderer.sprite = spriteTwo;
+				break;
+			case 3:
+				cursorRenderer.sprite = spriteThree;
+				break;
+			default:
+				cursorRenderer.sprite = spriteZero;
+				break;
+        }
+
+		if (m_RemainingLives <= 0)
+		{
+			GameOver = true;
+			m_FliesFinalText.text = m_ObjectsCollected.ToString();
+			m_ScoreFinalText.text = m_Score.ToString();
+
+			TimeSpan finalTime = TimeSpan.FromSeconds(m_TimeAlive);
+			m_Rigidbody2D.gravityScale = 0;
+			m_Rigidbody2D.velocity = Vector2.zero;
+			lavaScript.gameOver = true;
+			m_StatsScreen.SetActive(true);
+		}
+
+		if (!GameOver)
+        {
+			m_TimeAlive += Time.deltaTime;
+			if (m_TimeToAcc >= 15)
+            {
+				m_TimeToAcc = 0;
+				lavaScript.speed += 0.3f;
+			}
+			m_TimeToAcc += Time.deltaTime;
+		}
+		
+		//Debug.Log(m_TimeAlive);
+	}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -212,11 +295,11 @@ public class CharacterController : MonoBehaviour
 		{
 			if (!m_CollectedObjectsIDs.Contains(collision.gameObject.GetInstanceID()))
             {
-				m_Score += 500;
+				m_Score += 100;
 				m_ObjectsCollected++;
 				m_CollectedObjectsIDs.Add(collision.gameObject.GetInstanceID());
 			}
-
+			SoundManagerHandler.PlaySound("PickupSound");
 			m_TongueShotsAvailable = 3;
 		}
 	}
@@ -272,31 +355,53 @@ public class CharacterController : MonoBehaviour
 
 	public void MouseMove(Vector2 direction)
 	{
-		m_FacingRight = (direction.x >= 0);
+		if (!GameOver)
+        {
+			m_FacingRight = (direction.x >= 0);
 
-		// If the player should jump... Must be grounded or sliding, must have enough possible jumps
-		if ((m_IsGrounded || (m_IsWallSliding)) || m_NumberOfJumps > 0)
-		{
-			// set animation bool
-			m_PlayerAnimator.SetBool("jump", true);
-			m_PlayerBodyAnimator.SetTrigger("jumpTrigger");
+			// If the player should jump... Must be grounded or sliding, must have enough possible jumps
+			if ((m_IsGrounded || (m_IsWallSliding)) || m_NumberOfJumps > 0)
+			{
+				int jumpSound = UnityEngine.Random.Range(1, 4);
+                switch (jumpSound)
+                {
+					case 1:
+						SoundManagerHandler.PlaySound("JumpSoundOne");
+						break;
+					case 2:
+						SoundManagerHandler.PlaySound("JumpSoundTwo");
+						break;
+					case 3:
+						SoundManagerHandler.PlaySound("JumpSoundThree");
+						break;
+					default:
+						SoundManagerHandler.PlaySound("JumpSoundOne");
+						break;
+                }
+                
+				// set animation bool
+				m_PlayerAnimator.SetBool("jump", true);
+				m_PlayerBodyAnimator.SetTrigger("jumpTrigger");
 
-			//substract one possible jump
-			m_NumberOfJumps--;
+				//substract one possible jump
+				m_NumberOfJumps--;
 
-			// Add a vertical force to the player.
-			//m_IsSticked = false;
-			m_Rigidbody2D.velocity = Vector2.zero;
-			m_Rigidbody2D.AddForce(new Vector2(direction.x * 200, 500));
+				// Add a vertical force to the player.
+				//m_IsSticked = false;
+				m_Rigidbody2D.velocity = Vector2.zero;
+				m_Rigidbody2D.AddForce(new Vector2(direction.x * 200, 500));
 
-		}
-		
+			}
+		}		
 	}
 
 	public void TongueGrapple(Vector2 direction)
 	{
-		m_FacingRight = (direction.x >= 0);
-		StartCoroutine(DrawTongue(direction));
+		if (!GameOver)
+		{
+			m_FacingRight = (direction.x >= 0);
+			StartCoroutine(DrawTongue(direction));
+		}
 	}
 
 	IEnumerator DrawTongue(Vector2 direction)
@@ -304,6 +409,19 @@ public class CharacterController : MonoBehaviour
 		// Prevent Tongue ability spam
         if (m_TongueReady && m_TongueShotsAvailable > 0)
         {
+			int jumpSound = UnityEngine.Random.Range(1, 3);
+			switch (jumpSound)
+			{
+				case 1:
+					SoundManagerHandler.PlaySound("TongueSoundOne");
+					break;
+				case 2:
+					SoundManagerHandler.PlaySound("TongueSoundTwo");
+					break;
+				default:
+					SoundManagerHandler.PlaySound("TongueSoundOne");
+					break;
+			}
 			m_TongueReady = false;
 			float shootOutDrawTime = .55f;						// Time to draw the out of mouth animation animation
 			float returnDrawTime = .2f;							// Time to draw the return animation if you miss
@@ -425,6 +543,10 @@ public class CharacterController : MonoBehaviour
 			GameObject.Destroy(tongueTip);
 			m_TongueReady = true;
 			m_TonguePulling = false;
+		} 
+		else
+        {
+			SoundManagerHandler.PlaySound("NoToungueSound");
 		}
 
 	}
@@ -443,11 +565,15 @@ public class CharacterController : MonoBehaviour
 
 	private IEnumerator RespawnPlayer(Vector2 position)
 	{
-		m_NumberOfJumps = 2;
-		m_Rigidbody2D.MovePosition(position);
-		yield return new WaitForFixedUpdate();
-		m_Rigidbody2D.velocity = Vector2.zero;
-		m_Rigidbody2D.AddForce(new Vector2(0, 1500));
-		yield return null;
+		if (!GameOver)
+		{
+			SoundManagerHandler.PlaySound("DeathSound");
+			m_NumberOfJumps = 2;
+			m_Rigidbody2D.MovePosition(position);
+			yield return new WaitForFixedUpdate();
+			m_Rigidbody2D.velocity = Vector2.zero;
+			m_Rigidbody2D.AddForce(new Vector2(0, 1500));
+			yield return null;
+		}
 	}
 }

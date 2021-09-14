@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlaterMovement : MonoBehaviour
 {
 
     public CharacterController m_Controller;
+    public int player = 1;
 
     void Update()
     {

@@ -1,0 +1,565 @@
+fileFormatVersion: 2
+guid: f45ca1903b100934dab4998faeaf2c97
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3363924808740716057
+    second: frogo_sprites_0
+  - first:
+      213: 2918929506137207242
+    second: frogo_sprites_1
+  - first:
+      213: 8784135222538570008
+    second: frogo_sprites_2
+  - first:
+      213: 4176634875233034524
+    second: frogo_sprites_3
+  - first:
+      213: -2334501559686600863
+    second: frogo_sprites_0
+  - first:
+      213: -4929007131580150918
+    second: frogo_sprites_1
+  - first:
+      213: -2349336351210134842
+    second: frogo_sprites_2
+  - first:
+      213: -3486091908301306927
+    second: frogo_sprites_3
+  - first:
+      213: -2052738007482754274
+    second: frogo_sprites_4
+  - first:
+      213: -3751645630918994764
+    second: frogo_sprites_5
+  - first:
+      213: 4281858729954079333
+    second: frogo_sprites_6
+  - first:
+      213: 9131308943735975732
+    second: frogo_sprites_7
+  - first:
+      213: 8910664126680426236
+    second: frogo_sprites_8
+  - first:
+      213: -8401152761554258907
+    second: frogo_sprites_9
+  - first:
+      213: -7239149012753526527
+    second: frogo_sprites_10
+  - first:
+      213: -5918945129280697232
+    second: frogo_sprites_11
+  - first:
+      213: -5943222269986317770
+    second: frogo_sprites_12
+  - first:
+      213: -4884643523734211567
+    second: frogo_sprites_13
+  - first:
+      213: -1659803560860179540
+    second: frogo_sprites_14
+  - first:
+      213: -8589092751064271092
+    second: frogo_sprites_15
+  - first:
+      213: 4566273723860249753
+    second: frogo_sprites_16
+  - first:
+      213: -293223374483026010
+    second: frogo_sprites_4
+  - first:
+      213: 2981623707772412954
+    second: frogo_sprites_5
+  - first:
+      213: 6167390733228165611
+    second: frogo_sprites_6
+  - first:
+      213: -2607643489102330614
+    second: frogo_sprites_7
+  - first:
+      213: -1478513854878082532
+    second: frogo_sprites_8
+  - first:
+      213: -6355191356920817855
+    second: frogo_sprites_9
+  - first:
+      213: 1810868866099331661
+    second: frogo_sprites_10
+  - first:
+      213: -904931189811908881
+    second: frogo_sprites_12
+  - first:
+      213: 5175344193229307367
+    second: frogo_sprites_13
+  - first:
+      213: 1170851184746807514
+    second: frogo_sprites_14
+  - first:
+      213: 5849382454459022581
+    second: frogo_sprites_17
+  - first:
+      213: 4350130453281047247
+    second: frogo_sprites_18
+  - first:
+      213: -2748159893460672620
+    second: frogo_sprites_19
+  - first:
+      213: -8792346683230169231
+    second: frogo_sprites_20
+  - first:
+      213: 105899140302992461
+    second: frogo_sprites_21
+  - first:
+      213: -4273060084280131276
+    second: frogo_sprites_22
+  - first:
+      213: -7583479997464413289
+    second: frogo_sprites_23
+  - first:
+      213: -1438521051690197107
+    second: frogo_sprites_24
+  - first:
+      213: -6600723103780741633
+    second: frogo_sprites_25
+  - first:
+      213: -6192255250722111293
+    second: frogo_sprites_11
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: frogo_sprites_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 167e84f333f2a9fd0800000000000000
+      internalID: -2334501559686600863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7b4ccaf026a89bb0800000000000000
+      internalID: -4929007131580150918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_2
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c22530390b756fd0800000000000000
+      internalID: -2349336351210134842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_3
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d3465721e9ee9fc0800000000000000
+      internalID: -3486091908301306927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_4
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af091cf4e24eebf0800000000000000
+      internalID: -293223374483026010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_5
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1468a307fad06920800000000000000
+      internalID: 2981623707772412954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_6
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9c9151239f69550800000000000000
+      internalID: 6167390733228165611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_7
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a050233001acfcbd0800000000000000
+      internalID: -2607643489102330614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_8
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1a9f748b734b7be0800000000000000
+      internalID: -1478513854878082532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_9
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1471a13d123ddc7a0800000000000000
+      internalID: -6355191356920817855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_10
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d424aaaa3af712910800000000000000
+      internalID: 1810868866099331661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_12
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 8
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feee61d90e90173f0800000000000000
+      internalID: -904931189811908881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 8
+        width: 86
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ed30d3af1482d740800000000000000
+      internalID: 5175344193229307367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_14
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 11
+        width: 87
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad0cda7f2f2bf3010800000000000000
+      internalID: 1170851184746807514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_11
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 107
+        width: 86
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c0492e48a0b01aa0800000000000000
+      internalID: -6192255250722111293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frogo_sprites_15
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 11
+        width: 87
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c077eed56a96dc880800000000000000
+      internalID: -8589092751064271092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

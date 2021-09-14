@@ -10,10 +10,10 @@ public class PlatformGeneration : MonoBehaviour
     float k_PlatformMinX;        // Min (Left) X coordinate to spawn a platform
     float k_PlatformMaxX;        // Max (Right) X coordinate to spawn a platform
 
-    const float k_PlatformMaxGapX = 2.5f;     // Maximum horizontal distance between 2 platforms
-    const float k_PlatformMinGapX = 0.5f;     // Maximum horizontal distance between 2 platforms
-    const float k_PlatformMaxGapY = 2.2f;     // Maximum vertical distance between 2 platforms
-    const float k_PlatformMinGapY = 0.7f;     // Minimum vertical distance between 2 platforms
+    const float k_PlatformMaxGapX = 2.7f;     // Maximum horizontal distance between 2 platforms
+    const float k_PlatformMinGapX = 0.7f;     // Maximum horizontal distance between 2 platforms
+    const float k_PlatformMaxGapY = 2.5f;     // Maximum vertical distance between 2 platforms
+    const float k_PlatformMinGapY = 1.0f;     // Minimum vertical distance between 2 platforms
 
     float m_PlatformCurrentX;       // X coordinate of currently spawned platform
     float m_PlatformCurrentY;       // Y coordinate of currently spawned platform
@@ -64,14 +64,14 @@ public class PlatformGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Platforms LongHorizontal = new Platforms(1.5f, 0f, platformPrefabLH);
-        Platforms MediumHorizontal = new Platforms(1f, 0f, platformPrefabMH);
-        Platforms SmallHorizontal = new Platforms(0.5f, 0f, platformPrefabSH);
+        Platforms LongHorizontal = new Platforms(2f, 0f, platformPrefabLH);
+        Platforms MediumHorizontal = new Platforms(1.5f, 0f, platformPrefabMH);
+        Platforms SmallHorizontal = new Platforms(1f, 0f, platformPrefabSH);
         Platforms MediumHorizontalMoving = new Platforms(2f, 0f, platformPrefabMHMoving);
-        Platforms LongVertical = new Platforms(0f, 1.5f, platformPrefabLV);
-        Platforms MediumVertical = new Platforms(0f, 1f, platformPrefabMV);
-        Platforms SmallVertical = new Platforms(0f, 0.5f, platformPrefabSV);
-        Platforms MediumVerticalMoving = new Platforms(0f, 2f, platformPrefabMVMoving);
+        Platforms LongVertical = new Platforms(0f, 2.5f, platformPrefabLV);
+        Platforms MediumVertical = new Platforms(0f, 2f, platformPrefabMV);
+        Platforms SmallVertical = new Platforms(0f, .5f, platformPrefabSV);
+        Platforms MediumVerticalMoving = new Platforms(0f, 3f, platformPrefabMVMoving);
 
         m_CameraHeight = 2f * Camera.main.orthographicSize;
         m_CameraWidth = m_CameraHeight * Camera.main.aspect;
